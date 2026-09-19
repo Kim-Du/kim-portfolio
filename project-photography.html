@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目详情 | Kim UI/UX</title>
+  
+  <!-- Tailwind v4 via Browser CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=LXGW+WenKai+TC&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* Colors */
+      --color-ink-black: #17191c;
+      --color-paper-white: #ffffff;
+      --color-mist-gray: #f2f2f3;
+      --color-fog-white: #fafafb;
+      --color-slate-gray: #777b86;
+      --color-ash-gray: #979799;
+      --color-smoke-gray: #a3a6af;
+      --color-blush-peach: #fbe1d1;
+      --color-sienna-brown: #5d2a1a;
+
+      /* Typography */
+      --font-logo: 'Noto Sans SC', 'SimHei', sans-serif;
+      --font-nav: 'Inter', 'Noto Sans SC', sans-serif;
+      --font-section-title: 'Noto Serif SC', serif;
+      --font-card-title: 'Noto Sans SC', sans-serif;
+      --font-body: 'Noto Sans SC', sans-serif;
+      --font-quote: 'LXGW WenKai TC', serif;
+
+      /* Scale */
+      --text-caption: 15px;
+      --text-body: 17px;
+      --text-body-lg: 20px;
+      --text-subheading: 22px;
+      --text-heading-sm: 26px;
+      --text-heading: 44px;
+      --text-heading-lg: 64px;
+      --text-display: 80px;
+
+      /* Spacing */
+      --spacing-4: 4px;
+      --spacing-8: 8px;
+      --spacing-12: 12px;
+      --spacing-16: 16px;
+      --spacing-20: 20px;
+      --spacing-24: 24px;
+      --spacing-32: 32px;
+      --spacing-40: 40px;
+      --spacing-64: 64px;
+      --spacing-80: 80px;
+
+      /* Border Radius */
+      --radius-cards: 24px;
+      --radius-images: 12px;
+      --radius-inputs: 16px;
+      --radius-buttons: 9999px;
+      --radius-elevatedcards: 20px;
+
+      /* Shadows */
+      --shadow-subtle: oklab(0 0 0 / 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 4px 24px 0px;
+      --shadow-subtle-3: rgba(4, 23, 43, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background-color: var(--color-paper-white);
+      color: var(--color-ink-black);
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title {
+      font-family: var(--font-section-title);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-text {
+      font-family: var(--font-nav);
+      font-weight: 400;
+    }
+
+    .quote-text {
+      font-family: var(--font-quote);
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-filled {
+      background-color: var(--color-ink-black);
+      color: var(--color-paper-white);
+      border-radius: var(--radius-buttons);
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--color-ink-black);
+      transition: opacity 0.2s;
+      font-family: var(--font-nav);
+    }
+    .pill-filled:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body class="antialiased text-[17px]">
+
+  <!-- Navigation -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-white/80 backdrop-blur-md border-b border-mist-gray/50 transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto flex justify-between items-center py-4 px-8">
+      <div class="text-[20px] font-bold" style="font-family: var(--font-logo);">Kim.</div>
+      <div class="flex gap-16 text-[16px] nav-text">
+        <a href="index.html#" class="text-ink-black hover:opacity-70 transition-opacity">关于</a>
+        <a href="index.html#education" class="text-ink-black hover:opacity-70 transition-opacity">教育经历</a>
+        <a href="index.html#experience" class="text-ink-black hover:opacity-70 transition-opacity">实习/工作经历</a>
+        <a href="index.html#portfolio" class="text-ink-black hover:opacity-70 transition-opacity">作品集</a>
+        <a href="index.html#lifestyle" class="text-ink-black hover:opacity-70 transition-opacity">更生动的我</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="assets/简历-杜金田-中国传媒大学-硕士-新闻与传播（品牌传播实务）.pdf" download class="pill-filled">获取简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Detail Content -->
+  <main class="w-full max-w-[1000px] mx-auto px-8 pt-24 pb-32">
+    
+    <!-- 1. 项目名称 -->
+    <h1 class="text-heading-lg section-title mb-6 text-ink-black">个人摄影作品（部分）</h1>
+    
+    <!-- 2. 技能点标签 -->
+        <div class="flex gap-3 mb-16 font-nav flex-wrap">
+      <span class="px-4 py-1.5 bg-paper-white border border-slate-gray/30 text-slate-gray text-[14px] rounded-full">
+        风光摄影
+      </span>
+      <span class="px-4 py-1.5 bg-paper-white border border-slate-gray/30 text-slate-gray text-[14px] rounded-full">
+        人文纪实
+      </span>
+      <span class="px-4 py-1.5 bg-paper-white border border-slate-gray/30 text-slate-gray text-[14px] rounded-full">
+        人像摄影
+      </span>
+    </div>
+
+    <!-- 3. 项目简介 -->
+        <div class="mb-24 bg-fog-white rounded-[24px] p-10 md:p-16 border border-mist-gray">
+      <p class="text-[18px] text-ink-black quote-text leading-[2]">
+        风光摄影作品
+      </p>
+    </div>
+
+        <!-- 4. 项目展示图片 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-[90%] mx-auto">
+      <!-- Image 1 -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_landscape_1.jpg" alt="风光摄影作品 1" class="w-full h-auto aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 2 -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_landscape_2.jpg" alt="风光摄影作品 2" class="w-full h-auto aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 3 -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_landscape_3.jpg" alt="风光摄影作品 3" class="w-full h-auto aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 4 -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_landscape_4.jpg" alt="风光摄影作品 4" class="w-full h-auto aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 项目成果总结 -->
+    <div class="mt-24 mb-12 bg-fog-white rounded-[24px] p-10 md:p-16 border border-mist-gray">
+      <p class="text-[18px] text-ink-black quote-text leading-[2]">
+        人像摄影作品
+      </p>
+    </div>
+
+    <!-- 6. 人像摄影展示图片 -->
+    <div class="grid grid-cols-1 md:grid-cols-[4fr_9fr_9fr] gap-8 w-full md:w-[90%] mx-auto mb-8">
+      <!-- Image 1 (Portrait 2:3) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_1.jpg" alt="人像摄影作品 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 2 (Landscape 3:2) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_2.jpg" alt="人像摄影作品 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 3 (Landscape 3:2) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_3.jpg" alt="人像摄影作品 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. 人像摄影展示图片（第二排） -->
+    <!-- 由于第二排同样是 1竖2横 的组合，继续沿用 4:9:9 的网格比例，保持完美对齐且不裁切 -->
+    <div class="grid grid-cols-1 md:grid-cols-[4fr_9fr_9fr] gap-8 w-full md:w-[90%] mx-auto mb-24">
+      <!-- Image 4 (Portrait) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_4.jpg" alt="人像摄影作品 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 5 (Landscape) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_5.jpg" alt="人像摄影作品 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <!-- Image 6 (Landscape) -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full h-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/photography_portrait_6.jpg" alt="人像摄影作品 6" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

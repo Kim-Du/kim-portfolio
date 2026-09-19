@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目详情 | Kim UI/UX</title>
+  
+  <!-- Tailwind v4 via Browser CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=LXGW+WenKai+TC&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* Colors */
+      --color-ink-black: #17191c;
+      --color-paper-white: #ffffff;
+      --color-mist-gray: #f2f2f3;
+      --color-fog-white: #fafafb;
+      --color-slate-gray: #777b86;
+      --color-ash-gray: #979799;
+      --color-smoke-gray: #a3a6af;
+      --color-blush-peach: #fbe1d1;
+      --color-sienna-brown: #5d2a1a;
+
+      /* Typography */
+      --font-logo: 'Noto Sans SC', 'SimHei', sans-serif;
+      --font-nav: 'Inter', 'Noto Sans SC', sans-serif;
+      --font-section-title: 'Noto Serif SC', serif;
+      --font-card-title: 'Noto Sans SC', sans-serif;
+      --font-body: 'Noto Sans SC', sans-serif;
+      --font-quote: 'LXGW WenKai TC', serif;
+
+      /* Scale */
+      --text-caption: 15px;
+      --text-body: 17px;
+      --text-body-lg: 20px;
+      --text-subheading: 22px;
+      --text-heading-sm: 26px;
+      --text-heading: 44px;
+      --text-heading-lg: 64px;
+      --text-display: 80px;
+
+      /* Spacing */
+      --spacing-4: 4px;
+      --spacing-8: 8px;
+      --spacing-12: 12px;
+      --spacing-16: 16px;
+      --spacing-20: 20px;
+      --spacing-24: 24px;
+      --spacing-32: 32px;
+      --spacing-40: 40px;
+      --spacing-64: 64px;
+      --spacing-80: 80px;
+
+      /* Border Radius */
+      --radius-cards: 24px;
+      --radius-images: 12px;
+      --radius-inputs: 16px;
+      --radius-buttons: 9999px;
+      --radius-elevatedcards: 20px;
+
+      /* Shadows */
+      --shadow-subtle: oklab(0 0 0 / 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 4px 24px 0px;
+      --shadow-subtle-3: rgba(4, 23, 43, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background-color: var(--color-paper-white);
+      color: var(--color-ink-black);
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title {
+      font-family: var(--font-section-title);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-text {
+      font-family: var(--font-nav);
+      font-weight: 400;
+    }
+
+    .quote-text {
+      font-family: var(--font-quote);
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-filled {
+      background-color: var(--color-ink-black);
+      color: var(--color-paper-white);
+      border-radius: var(--radius-buttons);
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--color-ink-black);
+      transition: opacity 0.2s;
+      font-family: var(--font-nav);
+    }
+    .pill-filled:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body class="antialiased text-[17px]">
+
+  <!-- Navigation -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-white/80 backdrop-blur-md border-b border-mist-gray/50 transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto flex justify-between items-center py-4 px-8">
+      <div class="text-[20px] font-bold" style="font-family: var(--font-logo);">Kim.</div>
+      <div class="flex gap-16 text-[16px] nav-text">
+        <a href="index.html#" class="text-ink-black hover:opacity-70 transition-opacity">关于</a>
+        <a href="index.html#education" class="text-ink-black hover:opacity-70 transition-opacity">教育经历</a>
+        <a href="index.html#experience" class="text-ink-black hover:opacity-70 transition-opacity">实习/工作经历</a>
+        <a href="index.html#portfolio" class="text-ink-black hover:opacity-70 transition-opacity">作品集</a>
+        <a href="index.html#lifestyle" class="text-ink-black hover:opacity-70 transition-opacity">更生动的我</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="assets/简历-杜金田-中国传媒大学-硕士-新闻与传播（品牌传播实务）.pdf" download class="pill-filled">获取简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Detail Content -->
+  <main class="w-full max-w-[1000px] mx-auto px-8 pt-24 pb-32">
+    
+    <!-- 1. 项目名称 -->
+    <h1 class="text-heading-lg section-title mb-6 text-ink-black">能恩耀高高新品上市全案</h1>
+    
+    <!-- 2. 技能点标签 -->
+    <div class="flex gap-3 mb-16 font-nav flex-wrap">
+      <!-- 技能点 1 -->
+      <span class="px-4 py-1.5 bg-paper-white border border-slate-gray/30 text-slate-gray text-[14px] rounded-full">
+        新品营销
+      </span>
+      <!-- 技能点 2 -->
+      <span class="px-4 py-1.5 bg-paper-white border border-slate-gray/30 text-slate-gray text-[14px] rounded-full">
+        内宣策划
+      </span>
+    </div>
+
+    <!-- 3. 项目简介 -->
+    <div class="mb-24 bg-fog-white rounded-[24px] p-10 md:p-16 border border-mist-gray">
+      <p class="text-[18px] text-ink-black quote-text leading-[2]">
+        锚定能恩耀高高产品定位与核心卖点，挖掘消费者育儿营养需求痛点，产出 KV、PDP、message house 等核心及延展物料，从0到1搭建品牌资产，适配多触点消费者沟通场景。
+      </p>
+    </div>
+
+    <!-- 4. 项目图片 (4:3) 占位框 -->
+    <div class="space-y-24 w-full md:w-2/3 mx-auto">
+      <!-- 雀巢项目 PDF 第 9 - 20 页 -->
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-010.png" alt="能恩耀高高 卖进故事 P10" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-009.png" alt="能恩耀高高 卖进故事 P9" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-011.png" alt="能恩耀高高 卖进故事 P11" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-012.png" alt="能恩耀高高 卖进故事 P12" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-013.png" alt="能恩耀高高 卖进故事 P13" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-014.png" alt="能恩耀高高 卖进故事 P14" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-015.png" alt="能恩耀高高 卖进故事 P15" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-016.png" alt="能恩耀高高 卖进故事 P16" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-017.png" alt="能恩耀高高 卖进故事 P17" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-018.png" alt="能恩耀高高 卖进故事 P18" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-019.png" alt="能恩耀高高 卖进故事 P19" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-020.png" alt="能恩耀高高 卖进故事 P20" class="w-full h-auto">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 项目成果总结 -->
+    <div class="mt-24 mb-24 bg-fog-white rounded-[24px] p-10 md:p-16 border border-mist-gray">
+      <p class="text-[18px] text-ink-black quote-text leading-[2]">
+        策划内部员工 engagement 联动，发掘公司内部宝爸宝妈资源，策划线上宣传物料 + 线下体验活动，内部口碑渗透<strong class="font-bold">4w</strong>人，线下触达超<strong class="font-bold">200人</strong>，转化小红书UGC帖子<strong class="font-bold">150+</strong>。
+      </p>
+    </div>
+
+    <!-- 6. 项目图片 (补充 Plan PDF 第 3 - 5 页) -->
+    <div class="space-y-24 w-full md:w-2/3 mx-auto">
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-003.png" alt="能恩耀高高 Plan P3" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-004.png" alt="能恩耀高高 Plan P4" class="w-full h-auto">
+        </div>
+      </div>
+      <div class="w-full bg-paper-white p-4 pb-12 rounded-[24px] shadow-subtle-3">
+        <div class="w-full bg-mist-gray rounded-[12px] overflow-hidden">
+          <img src="assets/nestle_project/page-005.png" alt="能恩耀高高 Plan P5" class="w-full h-auto">
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

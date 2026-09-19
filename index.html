@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kim | UI/UX 设计师</title>
+  
+  <!-- Tailwind v4 via Browser CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Google Fonts: 引入思源黑体 (Noto Sans SC), 思源宋体 (Noto Serif SC), 霞鹜文楷 (LXGW WenKai TC), Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=LXGW+WenKai+TC&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* Colors */
+      --color-ink-black: #17191c;
+      --color-paper-white: #ffffff;
+      --color-mist-gray: #f2f2f3;
+      --color-fog-white: #fafafb;
+      --color-slate-gray: #777b86;
+      --color-ash-gray: #979799;
+      --color-smoke-gray: #a3a6af;
+      --color-blush-peach: #fbe1d1;
+      --color-sienna-brown: #5d2a1a;
+
+      /* Typography - 根据视觉参考更新 */
+      --font-logo: 'Noto Sans SC', 'SimHei', sans-serif; /* 黑体 */
+      --font-nav: 'Inter', 'Noto Sans SC', sans-serif; /* Inter / 思源黑体 */
+      --font-section-title: 'Noto Serif SC', serif; /* 栏目标题：思源宋体 Bold */
+      --font-card-title: 'Noto Sans SC', sans-serif; /* Podcast标题：思源黑体 Medium */
+      --font-body: 'Noto Sans SC', sans-serif; /* 描述文字：思源黑体 Regular */
+      --font-quote: 'LXGW WenKai TC', serif; /* 人物金句：霞鹜文楷 */
+
+      /* Scale */
+      --text-caption: 15px;
+      --text-body: 17px;
+      --text-body-lg: 20px;
+      --text-subheading: 22px;
+      --text-heading-sm: 26px;
+      --text-heading: 44px;
+      --text-heading-lg: 64px;
+      --text-display: 80px; /* 稍微缩小以适应中文 */
+
+      /* Spacing */
+      --spacing-4: 4px;
+      --spacing-8: 8px;
+      --spacing-12: 12px;
+      --spacing-16: 16px;
+      --spacing-20: 20px;
+      --spacing-24: 24px;
+      --spacing-32: 32px;
+      --spacing-40: 40px;
+      --spacing-64: 64px;
+      --spacing-80: 80px;
+
+      /* Border Radius */
+      --radius-cards: 24px;
+      --radius-images: 12px;
+      --radius-inputs: 16px;
+      --radius-buttons: 9999px;
+      --radius-elevatedcards: 20px;
+
+      /* Shadows */
+      --shadow-subtle: oklab(0 0 0 / 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 4px 24px 0px;
+      --shadow-subtle-3: rgba(4, 23, 43, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background-color: var(--color-paper-white);
+      color: var(--color-ink-black);
+      /* 中文行间距稍微调大 */
+      line-height: 1.6;
+      /* 中文不需要负字距，保持默认或微小正值 */
+      letter-spacing: 0.02em;
+    }
+
+    /* 栏目标题：思源宋体 Bold */
+    .section-title {
+      font-family: var(--font-section-title);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    /* 导航 */
+    .nav-text {
+      font-family: var(--font-nav);
+      font-weight: 400;
+    }
+
+    /* Podcast 标题 (卡片标题) */
+    .card-title {
+      font-family: var(--font-card-title);
+      font-weight: 500;
+    }
+
+    /* 人物金句 */
+    .quote-text {
+      font-family: var(--font-quote);
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-filled {
+      background-color: var(--color-ink-black);
+      color: var(--color-paper-white);
+      border-radius: var(--radius-buttons);
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--color-ink-black);
+      transition: opacity 0.2s;
+      font-family: var(--font-nav);
+    }
+    .pill-filled:hover {
+      opacity: 0.9;
+    }
+
+    .pill-ghost {
+      background-color: transparent;
+      color: var(--color-ink-black);
+      border-radius: var(--radius-buttons);
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--color-ink-black);
+      transition: background-color 0.2s;
+      font-family: var(--font-nav);
+    }
+    .pill-ghost:hover {
+      background-color: var(--color-fog-white);
+    }
+
+    .text-link {
+      color: var(--color-ink-black);
+      font-size: 16px;
+      padding: 20px 0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-nav);
+    }
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .card-neutral {
+      background-color: var(--color-mist-gray);
+      border-radius: var(--radius-cards);
+      padding: 32px 20px;
+    }
+
+    .card-accent {
+      background-color: var(--color-blush-peach);
+      color: var(--color-sienna-brown);
+      border-radius: var(--radius-cards);
+      padding: 40px;
+    }
+
+    .floating-artifact {
+      background-color: var(--color-paper-white);
+      border-radius: var(--radius-elevatedcards);
+      box-shadow: var(--shadow-subtle-3);
+      padding: 16px 20px 12px 12px;
+    }
+  </style>
+</head>
+<body class="antialiased text-[17px]">
+
+  <!-- Navigation -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-white/80 backdrop-blur-md border-b border-mist-gray/50 transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto flex justify-between items-center py-4 px-8">
+      <div class="text-[20px] font-bold" style="font-family: var(--font-logo);">Kim.</div>
+      <div class="flex gap-16 text-[16px] nav-text">
+        <a href="#" class="text-ink-black hover:opacity-70 transition-opacity">关于</a>
+        <a href="#education" class="text-ink-black hover:opacity-70 transition-opacity">教育经历</a>
+        <a href="#experience" class="text-ink-black hover:opacity-70 transition-opacity">实习/工作经历</a>
+        <a href="#portfolio" class="text-ink-black hover:opacity-70 transition-opacity">作品集</a>
+        <a href="#lifestyle" class="text-ink-black hover:opacity-70 transition-opacity">更生动的我</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="assets/简历-杜金田-中国传媒大学-硕士-新闻与传播（品牌传播实务）.pdf" download class="pill-filled">获取简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="w-full max-w-[1200px] mx-auto px-8 pt-24 pb-32">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-16 items-center">
+      <!-- Left: Text Content -->
+      <div class="z-10 relative">
+        <div class="text-[14px] text-slate-gray tracking-widest uppercase mb-4 font-nav">ABOUT ME</div>
+        <h1 class="text-display mb-10 section-title leading-[1.1]">
+          只有滚动的石头<br><i class="text-slate-gray not-italic font-normal">才能不长青苔。</i>
+        </h1>
+        <div class="mb-12 max-w-[700px] leading-[2] space-y-6">
+          <p class="text-[28px] font-bold text-ink-black section-title tracking-normal">
+            你好，我是杜金田。
+          </p>
+          <div class="text-[18px] text-slate-gray quote-text space-y-6">
+            <p class="whitespace-nowrap">
+              我喜欢旅行，背着相机去不同的地方，看风景，也收藏路上的故事；
+            </p>
+            <p class="whitespace-nowrap">
+              我喜欢摇滚乐和电影，借他人的叙事，拓宽自己生命的边界；
+            </p>
+            <p class="whitespace-nowrap">
+              我不擅长运动，但在尝试规律健身，以此来建立生活的锚点。
+            </p>
+          </div>
+        </div>
+        
+        <!-- Contact Buttons with Interaction -->
+        <div class="flex gap-4 relative" id="contact-buttons">
+          <button onclick="toggleWechat()" class="pill-ghost relative group px-8">
+            微信
+          </button>
+          <button onclick="copyEmail(this)" class="pill-ghost group px-8">
+            <span class="email-text">邮件</span>
+          </button>
+
+          <!-- Wechat QR Code Popover -->
+          <div id="wechat-popover" class="absolute bottom-full left-0 mb-4 bg-paper-white border border-mist-gray rounded-2xl p-4 shadow-subtle-3 opacity-0 pointer-events-none transition-all duration-200 transform translate-y-2 z-50">
+            <div class="w-48 h-auto bg-mist-gray rounded-lg overflow-hidden flex items-center justify-center">
+              <img src="assets/qrcode.jpg" alt="微信二维码" class="w-full h-auto object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Profile Image -->
+      <div class="relative w-full aspect-[3/4] max-w-[400px] mx-auto md:ml-auto">
+        <img 
+          src="assets/profile.jpg" 
+          alt="杜金田 Profile" 
+          class="w-full h-full object-cover rounded-[24px] shadow-sm grayscale hover:grayscale-0 transition-all duration-500"
+        />
+        <!-- Optional decorative element -->
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-fog-white rounded-full -z-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="w-full bg-mist-gray py-24 border-t border-slate-gray/20">
+    <div class="max-w-[1200px] mx-auto px-8">
+      <div class="text-[14px] text-slate-gray tracking-widest uppercase mb-16 font-nav leading-none">EDUCATION PATH</div>
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-12 max-w-[900px] mx-auto">
+        <!-- Education 1 -->
+        <div class="flex items-stretch gap-6 w-full md:w-auto">
+          <!-- Logo container: matched to the exact height of the two lines of text -->
+          <div class="flex items-center">
+            <img src="assets/cuc_logo.png" alt="中国传媒大学校徽" class="h-[52px] w-auto object-contain" />
+          </div>
+          <div class="flex flex-col justify-between py-[2px]">
+            <h3 class="text-[20px] font-bold text-ink-black leading-none section-title">中国传媒大学</h3>
+            <div class="text-[15px] text-slate-gray font-nav leading-none">广告学学士 <span class="mx-2">·</span> 2022 - 2026</div>
+          </div>
+        </div>
+
+        <!-- Arrow Divider -->
+        <div class="hidden md:flex text-slate-gray/40">
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </div>
+        <div class="md:hidden text-slate-gray/40">
+          <i data-lucide="arrow-down" class="w-6 h-6"></i>
+        </div>
+
+        <!-- Education 2 -->
+        <div class="flex items-stretch gap-6 w-full md:w-auto">
+          <div class="flex items-center">
+            <img src="assets/cuc_logo.png" alt="中国传媒大学校徽" class="h-[52px] w-auto object-contain" />
+          </div>
+          <div class="flex flex-col justify-between py-[2px]">
+            <h3 class="text-[20px] font-bold text-ink-black leading-none section-title">中国传媒大学</h3>
+            <div class="text-[15px] text-slate-gray font-nav leading-none">新闻与传播（品牌传播）硕士 <span class="mx-2">·</span> 2026 - 2028</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="w-full bg-paper-white py-32">
+    <div class="max-w-[1200px] mx-auto px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-24 relative">
+        <div class="text-[14px] text-slate-gray tracking-widest uppercase mb-16 font-nav text-left pt-8">MY INTERNSHIPS</div>
+        <div class="text-center">
+          <h2 class="text-heading-lg mb-6 section-title">在真实项目里，建立多样能力。</h2>
+          <p class="text-[18px] text-slate-gray max-w-[700px] mx-auto quote-text">
+            从品牌市场到运营增长，在不同业务场景中积累经验，在多元实践中形成复合视角。
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative max-w-[1000px] mx-auto">
+        <!-- Vertical Line -->
+        <div class="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-mist-gray transform -translate-x-1/2"></div>
+
+        <!-- Experience Item 01: ByteDance (抖音) -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-32 group">
+          <!-- Node -->
+          <div class="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 w-10 h-10 rounded-full bg-paper-white border-2 border-mist-gray text-slate-gray flex items-center justify-center text-[14px] font-bold font-nav transform -translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-ink-black group-hover:text-ink-black transition-colors">01</div>
+          
+          <!-- Left: Text -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-0 md:pr-20 md:text-right mb-12 md:mb-0 pt-2 md:pt-0">
+            <div class="text-[14px] text-sienna-brown font-nav mb-2 tracking-widest">2026.05 - 2026.09</div>
+            <h3 class="text-[28px] font-bold text-ink-black mb-2 section-title">字节跳动</h3>
+            <div class="text-[15px] font-bold text-slate-gray mb-6">行业营销实习生｜抖音</div>
+            <div class="text-[15px] text-slate-gray leading-[1.8] inline-block text-justify">
+              <p class="mb-3">聚焦标杆作者打造与优质内容传播，为头部作者策划选题与资源撮合，累计产出 <strong class="font-bold text-ink-black">14</strong> 条千万级爆款内容，全网互动超 <strong class="font-bold text-ink-black">2000w+</strong>。</p>
+              <p>主导“星铁团魂二创”、“高考第七门”等品效合一节点活动，兼顾内容破圈与产品拉新，相关内容总播放突破 <strong class="font-bold text-ink-black">1.2亿+</strong>，Q3 累计贡献自然新增 <strong class="font-bold text-ink-black">48.9w</strong>。</p>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-20">
+            <div class="relative w-full max-w-[400px]">
+              <div class="bg-paper-white p-3 pb-12 rounded-[12px] shadow-subtle-3 transform rotate-2 hover:rotate-0 transition-transform duration-300 relative z-10 timeline-card">
+                <img src="assets/bytedance_industry_marketing_cover.jpg" alt="字节跳动行业营销实习" class="w-full h-[240px] object-cover rounded-[8px] grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              <div class="absolute -top-4 -right-4 w-full h-full bg-mist-gray rounded-[16px] shadow-subtle transform -rotate-1 -z-10" style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 20px 20px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 02: ByteDance (GTM) -->
+        <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-32 group">
+          <!-- Node -->
+          <div class="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 w-10 h-10 rounded-full bg-paper-white border-2 border-mist-gray text-slate-gray flex items-center justify-center text-[14px] font-bold font-nav transform -translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-ink-black group-hover:text-ink-black transition-colors">02</div>
+          
+          <!-- Right: Text -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-20 mb-12 md:mb-0 text-left pt-2 md:pt-0">
+            <div class="text-[14px] text-sienna-brown font-nav mb-2 tracking-widest">2026.02 - 2026.04</div>
+            <h3 class="text-[28px] font-bold text-ink-black mb-2 section-title">字节跳动</h3>
+            <div class="text-[15px] font-bold text-slate-gray mb-6">产品运营实习生（国际化）</div>
+            <div class="text-[15px] text-slate-gray leading-[1.8] text-justify">
+              <p class="mb-3">从0到1搭建 TikTok One 产品的 Messaging Framework，统一全球产品叙事和宣传资料，并作为后续 GTM 资产的信息基础。</p>
+              <p class="mb-3">主导官网迭代项目，建立“针对三端用户，呈现三个落地页”的新架构，建立对外沟通阵地。</p>
+              <p>作为 PMO 全程负责周边生产与分发项目，覆盖三场 P0 级大型活动超1100名优质客户。</p>
+            </div>
+          </div>
+
+          <!-- Left: Image -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-0 md:pr-20 flex md:justify-end">
+            <div class="relative w-full max-w-[400px]">
+              <div class="bg-paper-white p-3 pb-12 rounded-[12px] shadow-subtle-3 transform -rotate-2 hover:rotate-0 transition-transform duration-300 relative z-10 timeline-card">
+                <img src="assets/bytedance_gtm_cover.png" alt="字节跳动国际化实习" class="w-full h-[240px] object-cover rounded-[8px] grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              <div class="absolute -bottom-4 -left-4 w-full h-full bg-mist-gray rounded-[16px] shadow-subtle transform rotate-1 -z-10" style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 20px 20px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 03: Nestle -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-32 group">
+          <!-- Node -->
+          <div class="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 w-10 h-10 rounded-full bg-paper-white border-2 border-mist-gray text-slate-gray flex items-center justify-center text-[14px] font-bold font-nav transform -translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-ink-black group-hover:text-ink-black transition-colors">03</div>
+          
+          <!-- Left: Text -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-0 md:pr-20 md:text-right mb-12 md:mb-0 pt-2 md:pt-0">
+            <div class="text-[14px] text-sienna-brown font-nav mb-2 tracking-widest">2025.04 - 2025.08</div>
+            <h3 class="text-[28px] font-bold text-ink-black mb-2 section-title">雀巢（Nestle）</h3>
+            <div class="text-[15px] font-bold text-slate-gray mb-6">市场部实习生｜婴儿营养</div>
+            <div class="text-[15px] text-slate-gray leading-[1.8] inline-block text-justify">
+              <p class="mb-3">操盘“能恩耀高高”新品上市，从0到1搭建品牌资产，策划员工 engagement 联动，内部口碑渗透4w人，转化小红书UGC帖子150+。</p>
+              <p class="mb-3">全权负责铂初 Premium 买赠活动全流程，单季吸引买赠订单消费者 1w+，直接支撑当季 40% 销量。</p>
+              <p>创新打通溯源系统与批次号查询后台，独立对接 IT 部门搭建新系统，彻底解决消费者溯源查询障碍。</p>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-20 flex justify-start">
+            <div class="relative w-[360px] group">
+              <div class="bg-paper-white p-3 pb-12 rounded-[12px] shadow-subtle-3 transform rotate-1 hover:rotate-0 transition-transform duration-300 relative z-10 timeline-card">
+                <img src="assets/nestle_internship.jpg" alt="雀巢实习" class="w-full h-[240px] object-cover rounded-[8px] grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              <div class="absolute -top-4 -right-4 w-full h-full bg-mist-gray rounded-[16px] shadow-subtle transform -rotate-2 -z-10" style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 20px 20px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 04: Xiaohongshu -->
+        <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-32 group">
+          <!-- Node -->
+          <div class="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 w-10 h-10 rounded-full bg-paper-white border-2 border-mist-gray text-slate-gray flex items-center justify-center text-[14px] font-bold font-nav transform -translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-ink-black group-hover:text-ink-black transition-colors">04</div>
+          
+          <!-- Right: Text -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-20 mb-12 md:mb-0 text-left pt-2 md:pt-0">
+            <div class="text-[14px] text-sienna-brown font-nav mb-2 tracking-widest">2024.07 - 2024.10</div>
+            <h3 class="text-[28px] font-bold text-ink-black mb-2 section-title">小红书</h3>
+            <div class="text-[15px] font-bold text-slate-gray mb-6">行业广告运营实习生｜商业部-快消行业</div>
+            <div class="text-[15px] text-slate-gray leading-[1.8] text-justify">
+              <p class="mb-3">基于平台特性与数据反馈，为乳制品、饮料行业输出精准的广告投放方案。参与《元气自在水秋冬投放方案》等核心项目。</p>
+              <p>借助小红书 Insight、灵犀等数据平台，评估品牌搜索排名与内容渗透率，输出竞价关键词优化策略，有效提升品牌投放 ROI。</p>
+            </div>
+          </div>
+
+          <!-- Left: Image -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-0 md:pr-20 flex md:justify-end">
+            <div class="relative w-full max-w-[400px]">
+              <div class="bg-paper-white p-3 pb-12 rounded-[12px] shadow-subtle-3 transform -rotate-1 hover:rotate-0 transition-transform duration-300 relative z-10 timeline-card">
+                <img src="assets/xiaohongshu_internship.jpg" alt="小红书实习" class="w-full h-[240px] object-cover rounded-[8px] grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              <div class="absolute -bottom-4 -left-4 w-full h-full bg-mist-gray rounded-[16px] shadow-subtle transform rotate-2 -z-10" style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 20px 20px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 05: Publicis Groupe -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between group">
+          <!-- Node -->
+          <div class="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 w-10 h-10 rounded-full bg-paper-white border-2 border-mist-gray text-slate-gray flex items-center justify-center text-[14px] font-bold font-nav transform -translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-ink-black group-hover:text-ink-black transition-colors">05</div>
+          
+          <!-- Left: Text -->
+          <div class="w-full md:w-1/2 pl-16 md:pl-0 md:pr-20 md:text-right mb-12 md:mb-0 pt-2 md:pt-0">
+            <div class="text-[14px] text-sienna-brown font-nav mb-2 tracking-widest">2024.01 - 2024.04</div>
+            <h3 class="text-[28px] font-bold text-ink-black mb-2 section-title">阳狮集团 / 李奥贝纳</h3>
+            <div class="text-[15px] font-bold text-slate-gray mb-6">客户执行实习生（AE）｜安慕希组</div>
+            <div class="text-[15px] text-slate-gray leading-[1.8] inline-block text-justify">
+              <p class="mb-3">全程跟进安慕希【CNY营销】及【巴黎奥运会营销】等大型 Campaign，参与前期对接、脑暴及近20款平面物料与 TVC 制作。</p>
+              <p class="mb-3">参与制定安慕希牛油果酸奶新品的营销策略，产出新品名称，跟进新品上市近10款平面物料制作。</p>
+              <p>分析行业竞品，提供饮料糖度分级后的研发建议与竞品应对策略。</p>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+            <div class="w-full md:w-1/2 pl-16 md:pl-20 flex justify-start">
+              <div class="relative w-[360px] group">
+                <!-- Polarid Card -->
+                <div class="bg-paper-white p-3 pb-12 rounded-[12px] shadow-subtle-3 transform rotate-2 hover:rotate-0 transition-transform duration-300 relative z-10 timeline-card">
+                  <img src="assets/publicis_internship.jpg" alt="阳狮集团实习" class="w-full h-[240px] object-cover rounded-[8px] grayscale hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <!-- Background Pattern -->
+                <div class="absolute -top-4 -right-4 w-full h-full bg-mist-gray rounded-[16px] shadow-subtle transform -rotate-1 -z-10" style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 20px 20px;"></div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="w-full bg-fog-white py-32">
+    <div class="w-full max-w-[1200px] mx-auto px-8">
+      <!-- Section Header -->
+      <div class="mb-20 relative">
+        <div class="text-[14px] text-slate-gray tracking-widest uppercase mb-16 font-nav text-left pt-8">PROJECTS</div>
+        <div class="text-center">
+          <h2 class="text-heading-lg mb-6 section-title">作品集</h2>
+          <p class="text-[18px] text-slate-gray max-w-[700px] mx-auto quote-text">精选案例，品牌、运营、商业化、影像，记录不同场景里的表达。</p>
+        </div>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="flex flex-wrap justify-center items-center gap-4 mb-16 font-nav">
+        <span class="text-slate-gray text-[18px] mr-2 flex items-center">
+          筛选分类：
+        </span>
+        <button onclick="filterPortfolio('all', this)" class="filter-btn px-6 py-2 rounded-full bg-slate-gray text-white border border-transparent text-[15px] font-medium transition-colors" data-filter="all">全部作品</button>
+        <button onclick="filterPortfolio('品牌策划', this)" class="filter-btn px-6 py-2 rounded-full bg-paper-white text-slate-gray hover:bg-mist-gray border border-mist-gray text-[15px] transition-colors" data-filter="品牌策划">品牌策划</button>
+        <button onclick="filterPortfolio('增长运营', this)" class="filter-btn px-6 py-2 rounded-full bg-paper-white text-slate-gray hover:bg-mist-gray border border-mist-gray text-[15px] transition-colors" data-filter="增长运营">增长运营</button>
+        <button onclick="filterPortfolio('商业化策划', this)" class="filter-btn px-6 py-2 rounded-full bg-paper-white text-slate-gray hover:bg-mist-gray border border-mist-gray text-[15px] transition-colors" data-filter="商业化策划">商业化策划</button>
+        <button onclick="filterPortfolio('摄影摄像', this)" class="filter-btn px-6 py-2 rounded-full bg-paper-white text-slate-gray hover:bg-mist-gray border border-mist-gray text-[15px] transition-colors" data-filter="摄影摄像">摄影摄像</button>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative w-full">
+        <!-- 
+          =======================================================================
+          【设计原则与代码维护指南：作品集卡片滑动与高斯模糊筛选组件】
+          后续所有的增删卡片、调整卡片内容，都必须严格遵循以下规则，以保证高阶交互的正常运行：
+          
+          1. 【同类相邻】同类型的卡片在 HTML 结构中必须相邻放置（例如：所有的"品牌策划"卡片放在一起），以保证在选择"全部作品"恢复默认顺序时视觉上的统一。
+          2. 【必填属性】新增卡片最外层 <div> 必须包含 `data-category="分类名称"` 属性，并且分类名称需与上方筛选按钮的 `data-filter` 完全一致。
+          3. 【遮罩结构】每张卡片内部（通常紧贴最外层 div）必须保留这段高斯模糊遮罩层代码：
+             <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+          4. 【滑动吸附】卡片外层 <div> 必须包含 `snap-center` 类名以支持滑动时的动态居中吸附。
+          5. 【基础样式】卡片外层 <div> 需要保持 `relative min-w-[360px] w-[360px] flex-shrink-0` 的基础尺寸与定位。
+          =======================================================================
+        -->
+        <!-- Horizontal Scroll Area -->
+                <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-4 px-4" id="portfolio-carousel">
+
+          <!-- Card 1: Nestle -->
+          <div data-category="品牌策划" class="relative min-w-[360px] w-[360px] flex-shrink-0 snap-center bg-paper-white rounded-[24px] overflow-hidden shadow-subtle-1 hover:shadow-subtle-2 transition-all duration-300 cursor-pointer group flex flex-col" onclick="handleCardClick(this, event, 'project-nestle.html')">
+            <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+            <div class="h-[220px] overflow-hidden">
+              <img src="assets/nestle_portfolio.jpg" alt="能恩耀高高新品上市全案" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+              <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[13px] font-medium tracking-wide">品牌策划</span>
+            </div>
+              <h3 class="text-[20px] text-ink-black mb-3 card-title">能恩耀高高新品上市全案</h3>
+              <p class="text-[14px] text-slate-gray mb-6 line-clamp-2 h-[45px]">深度参与雀巢能恩系列新品的上市营销，搭建品牌资产，设计口碑传播活动。</p>
+              
+              <div class="flex gap-2 mb-6 flex-wrap font-nav">
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">新品营销</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">全案策划</span>
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-mist-gray font-nav">
+                <div class="flex items-center gap-2 text-green-600 text-[14px] font-bold mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i> 项目成果
+                </div>
+                <ul class="text-[13px] text-slate-gray space-y-2">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>口碑渗透超4w人</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>触达内部精准TA超200人</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Baize Cup -->
+          <div data-category="增长运营" class="relative min-w-[360px] w-[360px] flex-shrink-0 snap-center bg-paper-white rounded-[24px] overflow-hidden shadow-subtle-1 hover:shadow-subtle-2 transition-all duration-300 cursor-pointer group flex flex-col" onclick="handleCardClick(this, event, 'project-baize.html')">
+            <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+            <div class="h-[220px] overflow-hidden">
+              <img src="assets/baize_cover.png" alt="白泽杯S3 标杆作者营销" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+              <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[13px] font-medium tracking-wide">增长运营</span>
+            </div>
+              <h3 class="text-[20px] text-ink-black mb-3 card-title">白泽杯S3 标杆作者营销</h3>
+              <p class="text-[14px] text-slate-gray mb-6 line-clamp-2 h-[45px]">围绕头部游戏创作者赛事IP，联动官媒与多方共创，推动全平台破圈传播。</p>
+              
+              <div class="flex gap-2 mb-6 flex-wrap font-nav">
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">事件营销</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">全链路宣发</span>
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-mist-gray font-nav">
+                <div class="flex items-center gap-2 text-green-600 text-[14px] font-bold mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i> 项目成果
+                </div>
+                <ul class="text-[13px] text-slate-gray space-y-2">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>全网总互动846w</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>作者7天涨粉82W</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Douyin -->
+          <div data-category="增长运营" class="relative min-w-[360px] w-[360px] flex-shrink-0 snap-center bg-paper-white rounded-[24px] overflow-hidden shadow-subtle-1 hover:shadow-subtle-2 transition-all duration-300 cursor-pointer group flex flex-col" onclick="handleCardClick(this, event, 'project-douyin.html')">
+            <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+            <div class="h-[220px] overflow-hidden">
+              <img src="assets/douyin_gaokao_cover.jpg" alt="抖音精选「高考第七门」系列纪录片" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+              <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[13px] font-medium tracking-wide">增长运营</span>
+            </div>
+              <h3 class="text-[20px] text-ink-black mb-3 card-title">抖音精选「高考第七门」系列纪录片</h3>
+              <p class="text-[14px] text-slate-gray mb-6 line-clamp-2 h-[45px]">策划高考纪实栏目，站内站外双榜破圈。</p>
+              
+              <div class="flex gap-2 mb-6 flex-wrap font-nav">
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">自然新增</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">栏目策划</span>
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-mist-gray font-nav">
+                <div class="flex items-center gap-2 text-green-600 text-[14px] font-bold mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i> 项目成果
+                </div>
+                <ul class="text-[13px] text-slate-gray space-y-2">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>单期平均播放1000W+</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>站外热榜在榜7天</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Xiaohongshu -->
+          <div data-category="商业化策划" class="relative min-w-[360px] w-[360px] flex-shrink-0 snap-center bg-paper-white rounded-[24px] overflow-hidden shadow-subtle-1 hover:shadow-subtle-2 transition-all duration-300 cursor-pointer group flex flex-col" onclick="handleCardClick(this, event, 'project-xhs.html')">
+            <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+            <div class="h-[220px] overflow-hidden">
+              <img src="assets/xhs_portfolio.jpg" alt="伊利冰品&小红书趋势及种草指南" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+              <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[13px] font-medium tracking-wide">商业化策划</span>
+            </div>
+              <h3 class="text-[20px] text-ink-black mb-3 card-title">伊利冰品&小红书<br>趋势及种草指南</h3>
+              <p class="text-[14px] text-slate-gray mb-6 line-clamp-2 h-[45px]">基于产品卖点，结合站内关键词笔记词云 & 搜索热词，锁定核心场景；梳理品牌小红书人群资产，匹配每类人群专属场景；拆解竞品投放优劣势，结合产品特性，输出精准投放建议。</p>
+              
+              <div class="flex gap-2 mb-6 flex-wrap font-nav">
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">信息流投放</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">KFS策略</span>
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-mist-gray font-nav">
+                <div class="flex items-center gap-2 text-green-600 text-[14px] font-bold mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i> 项目成果
+                </div>
+                <ul class="text-[13px] text-slate-gray space-y-2">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>人群渗透提升45%</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>场景渗透提升12.6倍</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Photography -->
+          <div data-category="摄影摄像" class="relative min-w-[360px] w-[360px] flex-shrink-0 snap-center bg-paper-white rounded-[24px] overflow-hidden shadow-subtle-1 hover:shadow-subtle-2 transition-all duration-300 cursor-pointer group flex flex-col" onclick="handleCardClick(this, event, 'project-photography.html')">
+            <div class="absolute inset-0 bg-paper-white/50 backdrop-blur-[4px] z-20 transition-opacity duration-300 opacity-0 pointer-events-none blur-overlay"></div>
+            <div class="h-[220px] overflow-hidden">
+              <img src="assets/photography_cover.jpg" alt="个人摄影作品（部分）" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+              <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[13px] font-medium tracking-wide">摄影摄像</span>
+            </div>
+              <h3 class="text-[20px] text-ink-black mb-3 card-title">个人摄影作品（部分）</h3>
+              <p class="text-[14px] text-slate-gray mb-6 line-clamp-2 h-[45px]">端起相机超过5年，用镜头记录真实的温度与情感。</p>
+              
+              <div class="flex gap-2 mb-6 flex-wrap font-nav">
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">风光摄影</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">人文纪实</span>
+                <span class="px-2 py-1 bg-mist-gray text-slate-gray text-[12px] rounded-md">人像摄影</span>
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-mist-gray font-nav">
+                <div class="flex items-center gap-2 text-green-600 text-[14px] font-bold mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i> 项目成果
+                </div>
+                <ul class="text-[13px] text-slate-gray space-y-2">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>数十场线下活动、会议摄影摄像经验</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-slate-gray"></div>长期坚持影棚、创意摄影尝试</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifestyle Section (Moments) -->
+  <section id="lifestyle" class="w-full bg-paper-white py-32">
+    <div class="max-w-[1200px] mx-auto px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-24 relative text-center">
+        <div class="text-[14px] text-slate-gray tracking-widest uppercase mb-16 font-nav pt-8 text-left md:text-center md:absolute md:left-0 md:top-8 md:pt-0">MOMENTS</div>
+        <h2 class="text-heading-lg mb-6 section-title">屏幕之外</h2>
+        <p class="text-[18px] text-slate-gray max-w-[700px] mx-auto quote-text">
+          这些都是我
+        </p>
+      </div>
+      
+      <!-- Photo Collage (Exact Grid Replica) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Column 1 -->
+        <div class="flex flex-col gap-4">
+          <!-- Top: Very Tall Climbing (approx 2:3 or 1:2) -->
+          <div class="group cursor-pointer relative flex-1 [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/twelve_apostles.jpg" alt="澳洲·十二门徒岩" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">澳洲·十二门徒岩</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom: Landscape Award/Stage (approx 16:9) -->
+          <div class="group cursor-pointer relative shrink-0 aspect-[16/9] [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/rock_hometown.jpg" alt="石家庄·Rock Hometown" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">石家庄·Rock Hometown</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="flex flex-col gap-4">
+          <!-- Top: Landscape IXDC Stage (approx 4:3) -->
+          <div class="group cursor-pointer relative shrink-0 aspect-[4/3] [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/public_speaking.jpg" alt="在超两百人大会上发言" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">在超两百人大会上发言</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom: Tall Thai Dress (approx 2:3 or 1:2) -->
+          <div class="group cursor-pointer relative flex-1 [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/nanjing_bookstore.jpg" alt="南京·先锋书店" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">南京·先锋书店</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="flex flex-col gap-4">
+          <!-- Top: Tall Hiking (approx 3:4) -->
+          <div class="group cursor-pointer relative aspect-[3/4] [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/tibet_kailash.jpg" alt="西藏·冈仁波齐" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">西藏·冈仁波齐</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom: Tall Vintage Dress (approx 3:4) -->
+          <div class="group cursor-pointer relative flex-1 [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/debate_team.jpg" alt="辩论队队长" class="w-full h-full object-cover object-right">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">辩论队队长</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="flex flex-col gap-4">
+          <!-- Top: Tall Outdoor Portrait (approx 3:4) -->
+          <div class="group cursor-pointer relative aspect-[3/4] [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/form_a_band.jpg" alt="组了一次乐队" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">组了一次乐队</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom: Anniversary Event (approx 3:4) -->
+          <div class="group cursor-pointer relative flex-1 [perspective:1000px]">
+            <div class="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative rounded-[16px]">
+              <!-- Front -->
+              <div class="w-full h-full [backface-visibility:hidden] rounded-[16px] overflow-hidden">
+                <img src="assets/70th_anniversary.jpg" alt="主导七十周年校庆活动" class="w-full h-full object-cover">
+              </div>
+              <!-- Back -->
+              <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-paper-white rounded-[16px] flex items-center justify-center p-6 border border-mist-gray">
+                <span class="section-title text-ink-black text-center whitespace-nowrap text-[18px]">主导七十周年校庆活动</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-[1200px] mx-auto px-8 py-12 border-t border-mist-gray flex justify-between items-center">
+    <div class="text-[15px] text-slate-gray nav-text">© <span id="current-year">2024</span> Kim. 保留所有权利。</div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    lucide.createIcons();
+
+    // Contact Button Interactions
+    function toggleWechat() {
+      const popover = document.getElementById('wechat-popover');
+      if (popover.classList.contains('opacity-0')) {
+        // Show
+        popover.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+        popover.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      } else {
+        // Hide
+        popover.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+        popover.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    }
+
+    // Close popover when clicking outside
+    document.addEventListener('click', function(event) {
+      const popover = document.getElementById('wechat-popover');
+      const buttonsContainer = document.getElementById('contact-buttons');
+      
+      if (!buttonsContainer.contains(event.target) && !popover.classList.contains('opacity-0')) {
+        popover.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+        popover.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    });
+
+    async function copyEmail(btnElement) {
+      const email = '14726031913@163.com'; // User's actual email
+      const textSpan = btnElement.querySelector('.email-text');
+      const originalText = textSpan.innerText;
+      
+      try {
+        await navigator.clipboard.writeText(email);
+        textSpan.innerText = '已复制!';
+        btnElement.classList.add('bg-fog-white');
+        
+        setTimeout(() => {
+          textSpan.innerText = originalText;
+          btnElement.classList.remove('bg-fog-white');
+        }, 2000);
+      } catch (err) {
+        // Fallback for older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          textSpan.innerText = '已复制!';
+          btnElement.classList.add('bg-fog-white');
+          setTimeout(() => {
+            textSpan.innerText = originalText;
+            btnElement.classList.remove('bg-fog-white');
+          }, 2000);
+        } catch (e) {
+          textSpan.innerText = '复制失败';
+        }
+        document.body.removeChild(textArea);
+      }
+    }
+
+    // Portfolio Filter Logic
+    let currentFilter = 'all';
+    let isClickScrolling = false;
+
+    // Initialize original order for cards
+    const portfolioCarousel = document.getElementById('portfolio-carousel');
+    Array.from(portfolioCarousel.children).forEach((card, index) => {
+      card.setAttribute('data-original-index', index);
+    });
+
+    function updateFilterUI(category) {
+      // 1. Update buttons
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        const btnCat = btn.getAttribute('data-filter');
+        if (btnCat === category) {
+          btn.classList.remove('bg-paper-white', 'text-slate-gray', 'hover:bg-mist-gray', 'border-mist-gray');
+          btn.classList.add('bg-slate-gray', 'text-white', 'border-transparent', 'font-medium');
+        } else {
+          btn.classList.add('bg-paper-white', 'text-slate-gray', 'hover:bg-mist-gray', 'border-mist-gray');
+          btn.classList.remove('bg-slate-gray', 'text-white', 'border-transparent', 'font-medium');
+        }
+      });
+
+      // 2. Update blur overlay on cards
+      const carousel = document.getElementById('portfolio-carousel');
+      const cards = carousel.children;
+      Array.from(cards).forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (!cardCat) return;
+        const overlay = card.querySelector('.blur-overlay');
+        if (!overlay) return;
+        
+        if (category === 'all' || cardCat === category) {
+          overlay.classList.add('opacity-0');
+          overlay.classList.remove('opacity-100');
+        } else {
+          overlay.classList.remove('opacity-0');
+          overlay.classList.add('opacity-100');
+        }
+      });
+    }
+
+    function handleCardClick(cardElement, event, url) {
+      const category = cardElement.getAttribute('data-category');
+      
+      // If we are in a specific filter and clicking a card that does NOT belong to this filter,
+      // it means the card is currently blurred.
+      const isBlurred = currentFilter !== 'all' && currentFilter !== category;
+      
+      if (isBlurred) {
+        // Prevent opening the link
+        event.preventDefault();
+        
+        // Trigger the same FLIP animation and reordering as clicking the top filter button
+        filterPortfolio(category);
+        
+      } else {
+        // Card is highlighted (or we are in 'all' mode), proceed to open details
+        window.open(url, '_blank');
+      }
+    }
+
+    function filterPortfolio(category, btnElement) {
+      if (isClickScrolling) return; // Prevent clicking while animating
+      
+      currentFilter = category;
+      const carousel = document.getElementById('portfolio-carousel');
+      let cards = Array.from(carousel.children);
+
+      // --- FLIP Animation Step 1: FIRST ---
+      // Record current visual positions (including scroll offset)
+      const firstPos = new Map();
+      cards.forEach(card => {
+        firstPos.set(card, card.getBoundingClientRect().left);
+      });
+
+      // Restore original order based on data-original-index
+      cards.sort((a, b) => parseInt(a.getAttribute('data-original-index')) - parseInt(b.getAttribute('data-original-index')));
+
+      // Reorder cards if a specific category is selected
+      if (category !== 'all') {
+        const matches = cards.filter(card => card.getAttribute('data-category') === category);
+        const others = cards.filter(card => card.getAttribute('data-category') !== category);
+
+        const mid = Math.floor(others.length / 2);
+        const leftOthers = others.slice(0, mid);
+        const rightOthers = others.slice(mid);
+
+        cards = [...leftOthers, ...matches, ...rightOthers];
+      }
+
+      // Re-append cards to DOM in the new order
+      cards.forEach(card => carousel.appendChild(card));
+
+      // Update UI (blur and buttons) AFTER reordering
+      updateFilterUI(category);
+      
+      // Calculate target scroll position
+      let targetScrollLeft = 0;
+      if (category !== 'all') {
+        const targetCard = cards.find(card => card.getAttribute('data-category') === category);
+        if (targetCard) {
+          targetScrollLeft = targetCard.offsetLeft - carousel.clientWidth / 2 + targetCard.clientWidth / 2;
+          // Clamp scroll position
+          targetScrollLeft = Math.max(0, Math.min(targetScrollLeft, carousel.scrollWidth - carousel.clientWidth));
+        }
+      }
+
+      // We instantly apply the new scroll position, but we will visually fake the smooth scroll
+      // using the FLIP transform technique.
+      carousel.scrollLeft = targetScrollLeft;
+
+      // --- FLIP Animation Step 2: LAST ---
+      const lastPos = new Map();
+      cards.forEach(card => {
+        lastPos.set(card, card.getBoundingClientRect().left);
+      });
+
+      // --- FLIP Animation Step 3: INVERT ---
+      cards.forEach(card => {
+        const first = firstPos.get(card);
+        const last = lastPos.get(card);
+        const deltaX = first - last;
+        
+        // Remove transitions temporarily
+        card.style.transition = 'none';
+        // Translate back to the original visual position
+        card.style.transform = `translateX(${deltaX}px)`;
+      });
+
+      // Force browser reflow so the inverted positions are applied instantly
+      void carousel.offsetWidth;
+
+      // --- FLIP Animation Step 4: PLAY ---
+      isClickScrolling = true;
+      cards.forEach(card => {
+        // Add a smooth spring-like transition
+        card.style.transition = 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)';
+        card.style.transform = 'translateX(0)';
+      });
+
+      // Clean up after animation finishes
+      setTimeout(() => {
+        cards.forEach(card => {
+          card.style.transition = '';
+          card.style.transform = '';
+        });
+        isClickScrolling = false;
+      }, 900);
+    }
+
+    // Scroll listener to update active filter when a card is centered
+    portfolioCarousel.addEventListener('scroll', () => {
+      // Allow sliding to trigger category selection even if we were in "all" mode
+      if (isClickScrolling) return;
+      
+      const carouselRect = portfolioCarousel.getBoundingClientRect();
+      const carouselCenter = carouselRect.left + carouselRect.width / 2;
+      
+      const cards = Array.from(portfolioCarousel.children);
+      let centeredCard = null;
+
+      // Edge case: scrolled to absolute left
+      if (portfolioCarousel.scrollLeft <= 20) {
+        centeredCard = cards[0];
+      } 
+      // Edge case: scrolled to absolute right
+      else if (portfolioCarousel.scrollLeft + portfolioCarousel.clientWidth >= portfolioCarousel.scrollWidth - 20) {
+        centeredCard = cards[cards.length - 1];
+      } 
+      // Normal case: find closest to center
+      else {
+        let minDistance = Infinity;
+        cards.forEach(card => {
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
+          const distance = Math.abs(carouselCenter - cardCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            centeredCard = card;
+          }
+        });
+      }
+      
+      if (centeredCard) {
+        const centeredCategory = centeredCard.getAttribute('data-category');
+        if (centeredCategory && centeredCategory !== currentFilter) {
+          currentFilter = centeredCategory;
+          updateFilterUI(centeredCategory);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
