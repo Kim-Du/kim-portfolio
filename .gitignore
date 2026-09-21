@@ -14,5 +14,6 @@
 # 忽略根目录的临时图片（已转移至 assets 的除外）
 *.jpg
 *.png
-!assets/*.jpg
-!assets/*.png
+!assets/**/*.jpg
+!assets/**/*.png
+!assets/**/*.gif
